@@ -8,7 +8,7 @@ export default function Hero(){
   const [open, setOpen] = useState(false)
   const lines = hero.title.split('\n')
   return (
-    <section id="films" className="min-h-screen bg-[#0d0d18] flex items-center relative overflow-hidden">
+    <section id="films" className="h-96 md:min-h-screen bg-[#0d0d18] flex items-center relative overflow-hidden">
       {/* Background GIF/Video */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-60"
@@ -17,15 +17,15 @@ export default function Hero(){
       {/* Subtle gradient overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
       
-      <div className="max-w-7xl mx-auto px-6 py-20 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-6 py-8 md:py-20 relative z-10 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6">
-            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.05}} className="text-accent uppercase tracking-widest text-sm drop-shadow-lg">{hero.eyebrow}</motion.div>
-            <motion.h1 initial={{y:30,opacity:0}} animate={{y:0,opacity:1}} transition={{delay:0.15}} className="text-6xl leading-tight font-semibold text-white drop-shadow-2xl">{lines.map((l,i)=><div key={i}>{l}</div>)}</motion.h1>
-            <motion.p initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.25}} className="text-[#ccc] max-w-xl text-sm drop-shadow-lg">{hero.description}</motion.p>
-            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.35}} className="flex gap-4 pt-4">
-              <button onClick={()=>setOpen(true)} className="bg-accent text-black px-6 py-2 rounded-sm font-medium flex items-center gap-2 hover:bg-opacity-90 transition"> <Play size={16} className="fill-black"/>Watch latest work</button>
-              <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="border border-white/20 text-white px-6 py-2 rounded-sm font-medium hover:border-accent transition">More info</button>
+          <div className="space-y-4 md:space-y-6">
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.05}} className="text-accent uppercase tracking-widest text-xs md:text-sm drop-shadow-lg">{hero.eyebrow}</motion.div>
+            <motion.h1 initial={{y:30,opacity:0}} animate={{y:0,opacity:1}} transition={{delay:0.15}} className="text-3xl md:text-6xl leading-tight font-semibold text-white drop-shadow-2xl">{lines.map((l,i)=><div key={i}>{l}</div>)}</motion.h1>
+            <motion.p initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.25}} className="text-[#ccc] max-w-xl text-xs md:text-sm drop-shadow-lg">{hero.description}</motion.p>
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.35}} className="flex flex-col md:flex-row gap-3 md:gap-4 pt-2 md:pt-4">
+              <button onClick={()=>setOpen(true)} className="bg-accent text-black px-6 py-2 rounded-sm font-medium flex items-center justify-center gap-2 hover:bg-opacity-90 transition text-sm"> <Play size={16} className="fill-black"/>Watch latest work</button>
+              <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="border border-white/20 text-white px-6 py-2 rounded-sm font-medium hover:border-accent transition text-sm">More info</button>
             </motion.div>
           </div>
         </div>
