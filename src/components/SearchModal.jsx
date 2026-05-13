@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Search as SearchIcon } from 'lucide-react'
 import { projects, team, roles } from '../data/data'
+import { smoothTween } from '../utils/motion'
 
 export default function SearchModal({ isOpen, onClose }) {
   const [searchQuery, setSearchQuery] = useState('')
@@ -44,10 +45,11 @@ export default function SearchModal({ isOpen, onClose }) {
             className="fixed inset-0 bg-black bg-opacity-60 z-40"
           />
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-20 left-0 right-0 z-50 flex justify-center"
+            exit={{ opacity: 0, y: -14 }}
+            transition={smoothTween}
+            className="fixed top-20 left-0 right-0 z-50 flex justify-center transform-gpu will-change-transform"
           >
             <div className="w-full max-w-2xl mx-4 bg-[#1a1a1f] border border-[#2a2a2f] rounded-lg shadow-2xl max-h-[80vh] overflow-hidden flex flex-col">
               {/* Search Input */}

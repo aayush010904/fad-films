@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { projects } from '../data/data'
 import ProjectModal from './ProjectModal'
+import { smoothTween } from '../utils/motion'
 
 export default function ProjectLineup(){
   const [selectedProject, setSelectedProject] = useState(null)
@@ -19,7 +20,7 @@ export default function ProjectLineup(){
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const itemsPerView = isMobile ? 2 : 4
+  const itemsPerView = isMobile ? 1 : 4
 
   const handleNext = () => {
     const maxStart = Math.max(0, projects.length - itemsPerView)
@@ -35,7 +36,7 @@ export default function ProjectLineup(){
   const visibleProjects = projects.slice(currentIndex, currentIndex + itemsPerView)
 
   return (
-    <section id="lineup" className="py-16 bg-[#0a0a0f]">
+    <section id="lineup" className="scroll-mt-20 md:scroll-mt-24 pt-12 pb-14 md:py-16 bg-[#0a0a0f]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-semibold text-white">Project lineup</h2>
@@ -72,8 +73,8 @@ export default function ProjectLineup(){
                 initial={{opacity:0, y:20}}
                 whileInView={{opacity:1, y:0}}
                 viewport={{once:true}}
-                transition={{delay: idx*0.1}}
-                className="text-left bg-[#1a1a1f] rounded-md border border-[#2a2a2f] hover:border-accent transition overflow-hidden group"
+                transition={{ ...smoothTween, delay: idx * 0.08 }}
+                className="transform-gpu will-change-transform text-left bg-[#1a1a1f] rounded-md border border-[#2a2a2f] hover:border-accent transition overflow-hidden group"
               >
                 <div className="relative aspect-video bg-black overflow-hidden">
                   <img
@@ -92,8 +93,8 @@ export default function ProjectLineup(){
             ))}
           </div>
 
-          {/* Mobile Grid (2 items) */}
-          <div className="md:hidden grid grid-cols-2 gap-4">
+          {/* Mobile Grid (1 item) */}
+          <div className="md:hidden grid grid-cols-1 gap-4">
             {visibleProjects.map((p, idx) => (
               <motion.button
                 key={p.id}
@@ -102,8 +103,8 @@ export default function ProjectLineup(){
                 initial={{opacity:0, y:20}}
                 whileInView={{opacity:1, y:0}}
                 viewport={{once:true}}
-                transition={{delay: idx*0.1}}
-                className="text-left bg-[#1a1a1f] rounded-md border border-[#2a2a2f] hover:border-accent transition overflow-hidden group"
+                transition={{ ...smoothTween, delay: idx * 0.08 }}
+                className="transform-gpu will-change-transform text-left bg-[#1a1a1f] rounded-md border border-[#2a2a2f] hover:border-accent transition overflow-hidden group"
               >
                 <div className="relative aspect-video bg-black overflow-hidden">
                   <img

@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
+import { smoothTween } from '../utils/motion'
 
 export default function ProjectModal({ project, isOpen, onClose }) {
   return (
@@ -15,10 +16,11 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             className="fixed inset-0 bg-black bg-opacity-80 z-50"
           />
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 50, opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            exit={{ y: 30, opacity: 0 }}
+            transition={smoothTween}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 transform-gpu will-change-transform"
           >
             <div className="bg-[#1a1a1f] rounded-lg max-w-2xl w-full border border-[#2a2a2f] max-h-[90vh] overflow-y-auto">
               <div className="flex justify-between items-center p-6 border-b border-[#2a2a2f]">

@@ -16,6 +16,20 @@ html {
 html,body,#root{height:100%}
 body{font-family:inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
 
+*,*::before,*::after{
+  box-sizing:border-box;
+}
+
+body,button,input,textarea,select,a,img,svg{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,svg{
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 .no-scrollbar::-webkit-scrollbar{display:none}
 .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
 

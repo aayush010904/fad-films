@@ -69,7 +69,7 @@ export const roles = [
 
 // EDIT HERE: Nav links
 export const navLinks = [
-  { id: 'films', label: 'Films' },
+  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'lineup', label: 'Lineup' },
   { id: 'vision', label: 'Vision' },

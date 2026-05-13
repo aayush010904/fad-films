@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { roles } from '../data/data'
 import { motion, AnimatePresence } from 'framer-motion'
+import { smoothTween } from '../utils/motion'
 
 export default function JoinUs(){
   const [form, setForm] = useState({name:'',email:'',role:'',msg:''})
@@ -23,7 +24,7 @@ export default function JoinUs(){
   }
 
   return (
-    <section id="join" className="py-16 bg-[#0a0a0f]">
+    <section id="join" className="scroll-mt-20 md:scroll-mt-24 pt-12 pb-14 md:py-16 bg-[#0a0a0f]">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
           <h2 className="text-3xl font-semibold text-white mb-4">Join the crew</h2>
@@ -73,7 +74,7 @@ export default function JoinUs(){
               <button className="w-full bg-accent text-black px-4 py-2 rounded-sm font-medium hover:bg-opacity-90 transition">Submit application</button>
             </form>
           ) : (
-            <motion.div initial={{scale:0.95,opacity:0}} animate={{scale:1,opacity:1}} className="bg-[#1a1a1f] p-6 rounded-md text-center border border-[#2a2a2f]">
+            <motion.div initial={{scale:0.98,opacity:0}} animate={{scale:1,opacity:1}} transition={smoothTween} className="bg-[#1a1a1f] p-6 rounded-md text-center border border-[#2a2a2f] transform-gpu will-change-transform">
               <div className="text-4xl text-accent mb-3">✓</div>
               <div className="text-white font-medium">Thanks — we received your application.</div>
               <div className="text-[#999] text-sm mt-2">We'll be in touch soon!</div>

@@ -1,17 +1,18 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { vision } from '../data/data'
+import { smoothTween } from '../utils/motion'
 
 export default function Vision() {
   return (
-    <section id="vision" className="py-20 bg-[#0d0d18]">
+    <section id="vision" className="scroll-mt-20 md:scroll-mt-24 pt-12 pb-16 md:py-20 bg-[#0d0d18]">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ ...smoothTween }}
+          className="transform-gpu will-change-transform mb-16"
         >
           <h2 className="text-4xl font-semibold text-white mb-6">{vision.title}</h2>
           <p className="text-[#999] text-xl leading-relaxed max-w-3xl italic">
@@ -23,18 +24,25 @@ export default function Vision() {
           {vision.values.map((value, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#1a1a1f] p-8 rounded-lg border border-[#2a2a2f] hover:border-accent transition group"
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ ...smoothTween, delay: idx * 0.08 }}
+              className="transform-gpu will-change-transform bg-[#1a1a1f] px-4 py-4 md:p-8 rounded-2xl md:rounded-lg border border-[#2a2a2f] hover:border-accent transition group"
             >
-              <h3 className="text-xl font-semibold text-accent mb-3 group-hover:text-white transition">
-                {value.title}
-              </h3>
-              <p className="text-[#999] text-sm leading-relaxed">
-                {value.description}
-              </p>
+              <div className="flex items-start gap-4 md:flex-col md:gap-0">
+                <div className="w-10 h-10 md:w-0 md:h-0 rounded-full bg-accent/10 text-accent flex items-center justify-center font-semibold shrink-0 md:mb-0">
+                  {idx + 1}
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-semibold text-accent mb-2 md:mb-3 group-hover:text-white transition">
+                    {value.title}
+                  </h3>
+                  <p className="text-[#999] text-sm leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
