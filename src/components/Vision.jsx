@@ -28,13 +28,13 @@ export default function Vision() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ ...smoothTween, delay: idx * 0.08 }}
-              className="transform-gpu will-change-transform bg-[#1a1a1f] px-4 py-4 md:p-8 rounded-2xl md:rounded-lg border border-[#2a2a2f] hover:border-accent transition group"
+              className="transform-gpu will-change-transform bg-[#1a1a1f] px-4 py-4 md:p-8 rounded-2xl md:rounded-lg border border-[#2a2a2f] hover:border-accent transition group flex flex-col md:items-center md:text-center"
             >
-              <div className="flex items-start gap-4 md:flex-col md:gap-0">
-                <div className="w-10 h-10 md:w-0 md:h-0 rounded-full bg-accent/10 text-accent flex items-center justify-center font-semibold shrink-0 md:mb-0">
+              <div className="flex items-start gap-4 md:flex-col md:gap-3 md:w-full">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center font-semibold shrink-0 md:shrink-0 md:mx-auto">
                   {idx + 1}
                 </div>
-                <div>
+                <div className="md:w-full">
                   <h3 className="text-lg md:text-xl font-semibold text-accent mb-2 md:mb-3 group-hover:text-white transition">
                     {value.title}
                   </h3>
